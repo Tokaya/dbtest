@@ -1,15 +1,13 @@
 from . import *
 
 
-# Models
+
 class User(db.DynamicDocument, ModelMixin):
     # id = db.IntField(primary_key=True)
     username = db.StringField(max_length=100)
     password = db.StringField(unique=False, max_length=250)
+    created_time = db.DateTimeField(default=datetime.datetime.now())
 
-    # meta = {
-    #     'abstract': True
-    # }
     def write(self, form):
         super(User, self).__init__()
         self.username = form.get('username', '')

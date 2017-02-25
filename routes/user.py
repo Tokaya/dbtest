@@ -16,11 +16,13 @@ def login_view():
     us = User.objects.all()
     u = current_user()
     if u is not None:
-        usernmae = u.username
+        username = u.username
+        created_time = u.created_time
         log('user_id', u.username)
     else:
-        usernmae = '游客'
-    return render_template('hello.html', users=us, username=usernmae)
+        username = '游客'
+        created_time = None
+    return render_template('hello.html', users=us, username=username, time=created_time)
 
 
 @main.route("/register", methods=['POST'])
@@ -34,7 +36,7 @@ def register():
     else:
         log('注册失败')
         abort(410)
-    return redirect(url_for('login_view'))
+    return redirect(url_for('.login_view'))
 
 
 @main.route("/login", methods=['POST'])

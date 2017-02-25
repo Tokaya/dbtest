@@ -1,6 +1,6 @@
 from flask import Flask
 from routes.user import main as routes_user
-from flask_mongoengine import MongoEngine
+from models import db
 from models.user import User
 from flask_script import Manager
 from flask import render_template
@@ -8,7 +8,7 @@ from flask import render_template
 
 app = Flask(__name__)
 manager = Manager(app)
-db = MongoEngine()
+
 
 
 def configure_app():
