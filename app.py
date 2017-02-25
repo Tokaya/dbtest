@@ -4,7 +4,7 @@ from models import db
 from models.user import User
 from flask_script import Manager
 from flask import render_template
-
+from routes.image import main as routes_image
 
 app = Flask(__name__)
 manager = Manager(app)
@@ -28,7 +28,7 @@ def configured_app():
 
 def register_routes(app):
     app.register_blueprint(routes_user)
-
+    app.register_blueprint(routes_image)
 
 @app.errorhandler(404)
 def error404(e):

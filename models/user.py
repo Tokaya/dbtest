@@ -1,7 +1,6 @@
 from . import *
 
 
-
 class User(db.DynamicDocument, ModelMixin):
     # id = db.IntField(primary_key=True)
     username = db.StringField(max_length=100)
